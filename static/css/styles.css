@@ -1,0 +1,128 @@
+/* General */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #121212;
+  color: #eee;
+  overflow-x: hidden;
+}
+
+/* Floating Emojis */
+#emojiBackground {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.emoji {
+  position: absolute;
+  user-select: none;
+  animation-name: floatUp;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10vh);
+    opacity: 0;
+  }
+}
+
+/* Card Styling */
+.card {
+  background: #000;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(255,255,255,0.1);
+  color: #fff;
+  width: 240px !important;
+  height: 380px !important;
+  transition: transform 0.3s ease;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.saved-card {
+  height: 380px;
+  position: relative;  /* important for absolutely positioned inputs and label */
+}
+
+/* Remove Button */
+.remove-btn {
+  position: absolute;
+  top: 4px;
+  right: 8px;
+  font-size: 20px;
+  color: red;
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* Input Styling */
+input.form-control {
+  background-color: #fff !important;
+  border: 1px solid #666 !important;
+  color: #000 !important;
+  border-radius: 6px;
+  opacity: 1 !important;
+}
+
+input.form-control::placeholder {
+  color: #555 !important;
+}
+
+/* Bio Styling - FIX for long bio */
+.profile-bio {
+  font-size: 14px;
+  color: #ddd;
+
+  max-height: 40px;   /* fixed height */
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;       /* For Safari and Chrome */
+  -webkit-box-orient: vertical;
+  line-clamp: 2;               /* Standard property (future support) */
+  box-orient: vertical;        /* Draft spec for some older engines */
+  user-select: text;
+  margin-bottom: 48px;         /* to avoid overlapping follow input */
+}
+
+/* Follows Input Alignment */
+/* Input pinned near bottom inside saved-card */
+.saved-card input.form-control-sm {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+}
+
+/* Label Above Input */
+/* Label pinned just above the input */
+.saved-card label.form-label {
+  position: absolute;
+  bottom: 45px;
+  left: 10px;
+  font-size: 12px;
+  color: #bbb;
+}
+
+/* Buttons */
+button:hover {
+  opacity: 0.9;
+}
